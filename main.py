@@ -3,10 +3,11 @@ import sys
 
 # Get user supplied values
 imagePath = sys.argv[1]
-cascPath = "haarcascade_frontalface_default.xml"
+cascPath =  sys.argv[2] # "haarcascade_frontalface_default.xml"
 
 # Create the haar cascade
 faceCascade = cv2.CascadeClassifier(cascPath)
+eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 # Read the image
 image = cv2.imread(imagePath)
@@ -21,7 +22,19 @@ faces = faceCascade.detectMultiScale(
     flags = cv2.CASCADE_SCALE_IMAGE
 )
 
+eyes = []
+img = image
+for (x,y,w,h) in faces:
+    img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+    roi_gray = gray[y:y+h, x:x+w]
+    roi_color = img[y:y+h, x:x+w]
+    eyes = eye_cascade.detectMultiScale(roi_gray)
+    for (ex,ey,ew,eh) in eyes:
+        cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+
 print("Found {0} faces!".format(len(faces)))
+print("Found {0} eyes!".format(len(eyes)))
+
 
 # Draw a rectangle around the faces
 for (x, y, w, h) in faces:
@@ -30,3 +43,4 @@ for (x, y, w, h) in faces:
 # cv2.imshow("Faces found", image)
 cv2.imwrite(imagePath + "_processed.png", image)
 cv2.waitKey(0)
+cv2.destroyAllWindows()

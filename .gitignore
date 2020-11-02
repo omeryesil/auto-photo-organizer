@@ -172,4 +172,9 @@ pip-selfcheck.json
 
 .env/
 
+*.jpg
+*.png 
+
+
+
 
