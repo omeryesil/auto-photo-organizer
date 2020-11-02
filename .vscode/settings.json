@@ -1,0 +1,5 @@
+{
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.pythonPath": "/mnt/c/Projects/github/auto-photo-organizer/env/bin/python3"
+}

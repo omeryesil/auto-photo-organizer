@@ -1,0 +1,13 @@
+
+# for machine learning and data analysis
+# with non gpu
+dlib==19.21.0
+
+# face recognition 
+face_recognition==1.3.0
+
+# utilities from Adrian Rosebrock
+imutils==0.5.3
+
+
+# opencv
