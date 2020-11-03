@@ -24,7 +24,7 @@ Ref: https://www.pyimagesearch.com/opencv-tutorials-resources-guides/
   pip install opencv-contrib-python
   ```
 
-## Run:
+## Run
 ```shell
 python main.py abc.JPG haarcascade_frontalface_alt2.xml
 ```
